@@ -10,5 +10,26 @@ package challenges
  */
 
 fun sortedSquares(list: List<Int>): List<Int> {
-	return mutableListOf()
+    val n = list.size
+    val result = MutableList(n) { 0 }
+    var left = 0
+    var right = n - 1
+    var index = n - 1
+    
+    while (left <= right) {
+        val leftSquare = list[left] * list[left]
+        val rightSquare = list[right] * list[right]
+        
+        if (leftSquare > rightSquare) {
+            result[index] = leftSquare
+            left++
+        } else {
+            result[index] = rightSquare
+            right--
+        }
+        
+        index--
+    }
+    
+    return result
 }
